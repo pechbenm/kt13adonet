@@ -1,0 +1,30 @@
+@model Author
+@{ ViewData["Title"] = Model.FullName; }
+
+<h1 class="h3">@Model.FullName</h1>
+<p class="text-muted">Дата рождения: @(Model.BirthDate?.ToString("dd.MM.yyyy") ?? "не указана")</p>
+
+<div class="d-flex justify-content-between align-items-center mt-4 mb-2">
+    <h2 class="h5 mb-0">Книги автора</h2>
+    <a class="btn btn-sm btn-primary" asp-controller="Books" asp-action="Create" asp-route-authorId="@Model.Id">Добавить книгу</a>
+</div>
+
+@if (!Model.Books.Any())
+{
+    <p class="text-muted">У этого автора пока нет книг.</p>
+}
+else
+{
+    <ul class="list-group mb-3">
+        @foreach (var b in Model.Books.OrderBy(b => b.PublishedYear))
+        {
+            <li class="list-group-item d-flex justify-content-between">
+                <span>@b.Title (@b.PublishedYear)</span>
+                <a asp-controller="Books" asp-action="Edit" asp-route-id="@b.Id">Изменить</a>
+            </li>
+        }
+    </ul>
+}
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary">Изменить автора</a>
+<a asp-action="Index" class="btn btn-link">К списку</a>

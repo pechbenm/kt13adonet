@@ -1,0 +1,13 @@
+@model Book
+@{ ViewData["Title"] = "Удалить книгу"; }
+
+<h1 class="h3">Удалить книгу?</h1>
+<div class="alert alert-warning">
+    Книга <strong>@Model.Title</strong> (@Model.Author?.FullName, @Model.PublishedYear) будет удалена.
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a asp-action="Index" class="btn btn-link">Отмена</a>
+</form>

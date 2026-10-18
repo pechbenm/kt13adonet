@@ -1,0 +1,26 @@
+@model Book
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<div class="mb-3" style="max-width: 420px">
+    <label asp-for="Title" class="form-label"></label>
+    <input asp-for="Title" class="form-control" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+</div>
+<div class="mb-3" style="max-width: 420px">
+    <label asp-for="AuthorId" class="form-label"></label>
+    <select asp-for="AuthorId" class="form-select" asp-items="@((SelectList)ViewData["Authors"]!)">
+        <option value="">— выберите автора —</option>
+    </select>
+    <span asp-validation-for="AuthorId" class="text-danger"></span>
+</div>
+<div class="mb-3" style="max-width: 420px">
+    <label asp-for="PublishedYear" class="form-label"></label>
+    <input asp-for="PublishedYear" class="form-control" />
+    <span asp-validation-for="PublishedYear" class="text-danger"></span>
+</div>
+<div class="mb-3" style="max-width: 420px">
+    <label asp-for="Genre" class="form-label"></label>
+    <input asp-for="Genre" class="form-control" />
+    <span asp-validation-for="Genre" class="text-danger"></span>
+</div>

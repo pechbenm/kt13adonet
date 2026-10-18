@@ -1,0 +1,23 @@
+@model Author
+@{ ViewData["Title"] = "Удалить автора"; }
+
+<h1 class="h3">Удалить автора?</h1>
+<div class="alert alert-warning">
+    Автор <strong>@Model.FullName</strong> будет удалён вместе со всеми его книгами (@Model.Books.Count).
+</div>
+
+@if (Model.Books.Any())
+{
+    <ul>
+        @foreach (var b in Model.Books)
+        {
+            <li>@b.Title (@b.PublishedYear)</li>
+        }
+    </ul>
+}
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a asp-action="Index" class="btn btn-link">Отмена</a>
+</form>

@@ -1,0 +1,9 @@
+@model Book
+@{ ViewData["Title"] = "Новая книга"; }
+
+<h1 class="h3">Новая книга</h1>
+<form asp-action="Create">
+    <partial name="_Form" />
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a asp-action="Index" class="btn btn-link">Отмена</a>
+</form>

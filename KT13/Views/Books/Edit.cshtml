@@ -1,0 +1,10 @@
+@model Book
+@{ ViewData["Title"] = "Изменить книгу"; }
+
+<h1 class="h3">Изменить книгу</h1>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <partial name="_Form" />
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a asp-action="Index" class="btn btn-link">Отмена</a>
+</form>

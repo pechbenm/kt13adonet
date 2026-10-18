@@ -1,0 +1,9 @@
+@model Author
+@{ ViewData["Title"] = "Новый автор"; }
+
+<h1 class="h3">Новый автор</h1>
+<form asp-action="Create">
+    <partial name="_Form" />
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a asp-action="Index" class="btn btn-link">Отмена</a>
+</form>
